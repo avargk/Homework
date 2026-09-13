@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 def clear_names(file_name: str) -> list:
@@ -19,10 +20,21 @@ def clear_names(file_name: str) -> list:
                 new_names_list.append(new_name)
     return new_names_list
 
+def is_cyrillic(name_item: str) -> bool:
+    """ Проверка на вхождение кириллицы в строку """
+    return bool(re.search("[а-яА-Я]", name_item))
+
+
+def filter_russian_names(names_list: list) -> list:
+    """ Фильтрация имен на русском языке """
+    new_names_list = list()
+    for name_item in names_list:
+        if is_cyrillic(name_item):
+            new_names_list.append(name_item)
+    return new_names_list
+
 
 if __name__ == '__main__':
     cleared_name = clear_names("names.txt")
 
-
-    for i in cleared_name:
-        print(i)
+    print(filter_russian_names(cleared_name))
