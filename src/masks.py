@@ -40,4 +40,3 @@ def get_mask_account(account_number: str) -> str:
     masked = "**" + account_number[-4:]
 
     return f"{masked}"
-
