@@ -1,6 +1,8 @@
 import re
 from pathlib import Path
 
+NAME = "Sasha"
+
 
 def clear_names(file_name: str) -> list:
     """Функция для очисти имен от лишних символов"""
